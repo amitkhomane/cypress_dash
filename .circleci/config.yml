@@ -28,5 +28,5 @@ workflows:
    version: 2
    one_and_two:
      jobs:
-       - python_deploy
+      #  - python_deploy
        - cypress_test
