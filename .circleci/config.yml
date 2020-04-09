@@ -18,7 +18,6 @@ jobs:
       - checkout
       # note: omitting caching for brevity
       # quickly install NPM dependencies
-      - run: npm init
       - run: npm install cypress --save-dev
       # - run: npm ci
       # load balance all tests across 4 CI machines
