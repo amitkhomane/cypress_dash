@@ -23,7 +23,8 @@ jobs:
       # load balance all tests across 4 CI machines
       # - run: $(npm bin)/cypress run --parallel
       - run: PROJECTFILES=$(circleci tests glob "cypress/integration/examples/*.spec.js" | circleci tests split)
-      - run: circleci tests glob "cypress/integration/examples/*.spec.js" | circleci tests split 
+      - run: ls -al
+      - run: apt install tree -y %% tree
       - run: ./node_modules/.bin/cypress run --spec "`circleci tests glob "cypress/integration/examples/*.spec.js" | circleci tests split`"
 workflows:
    version: 2
