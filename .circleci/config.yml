@@ -24,7 +24,7 @@ jobs:
       # - run: $(npm bin)/cypress run --parallel
       - run: PROJECTFILES=$(circleci tests glob "cypress/integration/examples/*.spec.js" | circleci tests split)
       - run: ls -al
-      - run: ./node_modules/.bin/cypress run --spec="`circleci tests glob "**/examples/*.spec.js" | circleci tests split`"
+      - run: ./node_modules/.bin/cypress run --spec `circleci tests glob "**/examples/*.spec.js" | circleci tests split`
 workflows:
    version: 2
    one_and_two:
