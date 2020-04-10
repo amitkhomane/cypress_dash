@@ -23,6 +23,7 @@ jobs:
       # load balance all tests across 4 CI machines
       # - run: $(npm bin)/cypress run --parallel
       - run: PROJECTFILES=$(circleci tests glob "cypress/integration/examples/*.spec.js" | circleci tests split)
+      - run: circleci tests glob "cypress/integration/examples/*.spec.js" | circleci tests split 
       - run: ./node_modules/.bin/cypress run --spec  $PROJECTFILES
 workflows:
    version: 2
