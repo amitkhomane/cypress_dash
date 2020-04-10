@@ -22,7 +22,8 @@ jobs:
       # - run: npm ci
       # load balance all tests across 4 CI machines
       # - run: $(npm bin)/cypress run --parallel
-      - run: ./node_modules/.bin/cypress run
+      - run: echo 'export TESTSPLIT=circleci tests glob "cypress/integration/examples" | circleci tests split --split-by=timings'
+      - run: ./node_modules/.bin/cypress run $TESTSPLIT
 workflows:
    version: 2
    one_and_two:
