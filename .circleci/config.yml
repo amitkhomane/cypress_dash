@@ -22,11 +22,13 @@ jobs:
       # - run: npm ci
       # load balance all tests across 4 CI machines
       # - run: $(npm bin)/cypress run --parallel
-      - run: echo 'export TESTSPLIT=circleci tests glob "cypress/integration/examples" | circleci tests split'
-      - run: ./node_modules/.bin/cypress run --spec $TESTSPLIT
+      - run: PROJECTFILES=$(circleci tests glob "cypress/integration/examples/*.spec.js" | circleci tests split)
+      - run: ./node_modules/.bin/cypress run --spec  $PROJECTFILES
 workflows:
    version: 2
    one_and_two:
      jobs:
       #  - python_deploy
        - cypress_test
+
+    
