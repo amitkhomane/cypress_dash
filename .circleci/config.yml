@@ -10,12 +10,12 @@ jobs:
           name: install dependancies
           command: |
             npm ci
-            mkdir test-results
+            mkdir /tmp/test-results
       - run:
          name: Run cypress e2e tests
          command: $(npm bin)/cypress run --spec `circleci tests glob "**/examples/*.spec.js" | circleci tests split| tr '\n' ','`
       - store_test_results:
-          path: test-results
+          path: /tmp/test-results
 
 
 workflows:
