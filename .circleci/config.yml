@@ -1,33 +1,21 @@
 version: 2
 jobs:
-#  python_deploy:
-#     docker:
-#     # Primary container image where all steps run.
-#      - image: amitkhomane/flaskapp
-
-#     steps:
-#      - checkout
-#      # start proprietary DB using private Docker image
-#      # with credentials stored in the UI
-#      - run: python app.py &
  cypress_test:
     docker:
       - image: cypress/base:10
     parallelism: 4
     steps:
       - checkout
-      # note: omitting caching for brevity
-      # quickly install NPM dependencies
       - run: npm install cypress --save-dev
-      # - run: npm ci
-      # load balance all tests across 4 CI machines
-      # - run: $(npm bin)/cypress run --parallel
       - run: ./node_modules/.bin/cypress run --spec `circleci tests glob "**/examples/*.spec.js" | circleci tests split| tr '\n' ','`
+
+
+
+
 workflows:
    version: 2
-   one_and_two:
+   e2e_tests:
      jobs:
-      #  - python_deploy
        - cypress_test
 
     
